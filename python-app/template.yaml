@@ -27,7 +27,6 @@ spec:
             - dev
             - prod
 
-  # 생성될시 스탭
   steps:
     - id: fetch-base
       name: Fetch Base

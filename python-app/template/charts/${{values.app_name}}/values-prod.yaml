@@ -1,4 +1,5 @@
 replicaCount: 2
+
 resources:
   requests:
     cpu: 60m

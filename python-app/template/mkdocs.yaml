@@ -1,10 +1,8 @@
 site_name: "${{values.app_name}}"
 site_description: "Main documentation for the ${{values.app_name}}"
 repo_url: https://github.com/limhoooo/${{values.app_name}}
-# 브런치 명
 edit_uri: edit/main/docs
 
-# 사용할 html 플러그인?
 plugins:
   - techdocs-core
 

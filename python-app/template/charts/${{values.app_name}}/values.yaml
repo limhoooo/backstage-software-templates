@@ -1,8 +1,8 @@
 replicaCount: 1
 image:
-  repository: limhoooo/python-app
+  repository: limhoooo/${{values.app_name}}
   pullPolicy: IfNotPresent
-  tag: ed7159
+  tag: ${{values.app_name}}-${{values.app_env}}-latest
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -23,7 +23,7 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: python-app.test.com
+    - host: ${{values.app_name}}-${{values.app_env}}.test.com
       paths:
         - path: /
           pathType: Prefix

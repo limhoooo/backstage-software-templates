@@ -1,0 +1,36 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: hello-world-template
+  title: Hello World Project
+  description: Registers a Hello World project in the catalog
+spec:
+  owner: development
+  type: service
+
+  parameters:
+    - title: Choose a name
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          title: Project Name
+          description: The name of your Hello World project
+
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: ${{ parameters.name }}
+
+    - id: register
+      name: Register in catalog
+      action: catalog:register
+      input:
+        location:
+          type: file
+          target: ${{ steps['fetch-base'].output.dir }}/catalog-info.yaml

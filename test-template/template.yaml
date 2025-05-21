@@ -27,11 +27,12 @@ spec:
         values:
           name: ${{ parameters.name }}
 
-    - id: log
-      name: Log Info
-      action: debug:log
+    - id: register
+      name: Register
+      action: catalog:register
       input:
-        message: "Project ${{ parameters.name }} has been created from template."
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
 
   output:
     text:

@@ -1,10 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.name }}
+  name: ${{ values.component_id }}
   description: Hello world test component
   annotations:
-    github.com/project-slug: limhoooo/${{values.name}}
+    github.com/project-slug: limhoooo/${{values.component_id}}
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service

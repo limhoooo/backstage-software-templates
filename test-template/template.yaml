@@ -11,9 +11,9 @@ spec:
   parameters:
     - title: Project Information
       required:
-        - name
+        - component_id
       properties:
-        name:
+        component_id:
           type: string
           title: Project Name
           description: The name of your project
@@ -33,8 +33,8 @@ spec:
       input:
         allowedHosts:
           - github.com
-        description: This is ${{ parameters.name }}
-        repoUrl: github.com?owner=limhoooo&repo=${{parameters.name}}
+        description: This is ${{ parameters.component_id }}
+        repoUrl: github.com?owner=limhoooo&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
 
@@ -48,4 +48,4 @@ spec:
   output:
     text:
       - title: "🎉 Template Test Completed!"
-        content: "Project '{{ parameters.name }}' has been created. Download it from the UI."
+        content: "Project '{{ parameters.component_id }}' has been created. Download it from the UI."

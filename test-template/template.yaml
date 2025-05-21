@@ -27,6 +27,17 @@ spec:
         values:
           name: ${{ parameters.name }}
 
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.name }}
+        repoUrl: github.com?owner=limhoooo&repo=${{parameters.name}}
+        protectDefaultBranch: false
+        repoVisibility: public
+
     - id: register
       name: Register
       action: catalog:register

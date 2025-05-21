@@ -1,36 +1,39 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: hello-world-template
-  title: Hello World Project
-  description: Registers a Hello World project in the catalog
+  name: local-test-template
+  title: Local Test Template
+  description: This template is for local testing without pushing to GitHub.
 spec:
   owner: development
   type: service
 
   parameters:
-    - title: Choose a name
+    - title: Project Information
       required:
         - name
       properties:
         name:
           type: string
           title: Project Name
-          description: The name of your Hello World project
+          description: The name of your project
 
   steps:
     - id: fetch-base
-      name: Fetch Base
+      name: Fetch Template
       action: fetch:template
       input:
         url: ./template
         values:
           name: ${{ parameters.name }}
 
-    - id: register
-      name: Register in catalog
-      action: catalog:register
+    - id: log
+      name: Log Info
+      action: debug:log
       input:
-        location:
-          type: file
-          target: ${{ steps['fetch-base'].output.dir }}/catalog-info.yaml
+        message: "Project ${{ parameters.name }} has been created from template."
+
+  output:
+    text:
+      - title: "🎉 Template Test Completed!"
+        content: "Project '{{ parameters.name }}' has been created. Download it from the UI."

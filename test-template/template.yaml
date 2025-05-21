@@ -14,9 +14,10 @@ spec:
         - component_id
       properties:
         component_id:
+          title: Component name
           type: string
-          title: Project Name
-          description: The name of your project
+          description: Provide a component (microservice) name
+          pattern: "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9
 
   steps:
     - id: fetch-base
